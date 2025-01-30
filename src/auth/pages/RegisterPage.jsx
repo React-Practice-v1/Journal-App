@@ -4,6 +4,7 @@ import { AuthLayout } from "../layout/AuthLayout";
 import { Link as RouterLink } from "react-router";
 import useForm from "../../hooks/useForm";
 import { useDispatch, useSelector } from "react-redux";
+import { startCreatingUserWithEmailPassword } from "../../store/auth/thunks";
 
 const formData = {
   displayName: "Luis",
@@ -43,6 +44,7 @@ export const RegisterPage = () => {
     setFormSubmitted(true);
 
     if (!isFormValid) return;
+    dispatch(startCreatingUserWithEmailPassword(formState));
   };
 
   return (
